@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         // 새 벡터를 생성하고 현재 속도 값을 새 벡터로 치환함.
         rb2d.velocity = new Vector2(velocity_x, rb2d.velocity.y);
 
+        // 애니메이터에 변수 전달
         animator.SetFloat("speed", Mathf.Abs(rb2d.velocity.x));
         animator.SetBool("isGrounded", isGrounded);
 
@@ -51,13 +52,17 @@ public class Player : MonoBehaviour
             leftJump --;
         }
 
+        // 왼쪽으로 가고 있다면
         if(rb2d.velocity.x < 0)
         {
+            // 왼쪽으로 뒤집기
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
         }
 
+        // 오른쪽으로 가고 있다면
         if(rb2d.velocity.x > 0)
         {
+            // 오른쪽으로 뒤집기
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
